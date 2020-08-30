@@ -1,0 +1,71 @@
+[[houses]]
+name = "80/10/10 30 year 2020 Cheap"
+price = 900000
+[houses.mortgage]
+rate = 3.10
+term = 30
+down = 0.1
+
+[[houses]]
+name = "80/10/10 30 year 2020 Medium"
+price = 1000000
+[houses.mortgage]
+rate = 3.15
+term = 30
+down = 0.1
+
+[[houses]]
+name = "80/10/10 30 year 2020 Expensive"
+price = 1100000
+[houses.mortgage]
+rate = 3.20
+term = 30
+down = 0.1
+
+[[houses]]
+name = "80/10/10 30 year 2021 Cheap"
+price = 900000
+[houses.mortgage]
+rate = 3.20
+term = 30
+down = 0.1
+
+[[houses]]
+name = "80/10/10 30 year 2021 Medium"
+price = 1000000
+[houses.mortgage]
+rate = 3.25
+term = 30
+down = 0.1
+
+[[houses]]
+name = "80/10/10 30 year 2021 Expensive"
+price = 1100000
+[houses.mortgage]
+rate = 3.35
+term = 30
+down = 0.1
+
+[[houses]]
+name = "20% down 2021 Cheap"
+price = 900000
+[houses.mortgage]
+rate = 3.10
+term = 30
+down = 0.2
+
+[[houses]]
+name = "20% down 2021 Medium"
+price = 1000000
+[houses.mortgage]
+rate = 3.15
+term = 30
+down = 0.2
+
+[[houses]]
+name = "20% down 2021 Expensive"
+price = 1100000
+[houses.mortgage]
+rate = 3.20
+term = 30
+down = 0.2
