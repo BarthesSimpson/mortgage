@@ -7,12 +7,17 @@ public:
     {
         down_payment_ = down_payment_percent * price;
         balance_ = price - down_payment_;
+        year_ = 0;
     }
 
-    double downPaymentSize();
-    double monthlyPayment();
+    const double getDownPaymentSize();
+    const double getMonthlyPayment();
+    const double getBalance();
+    void incrementYear();
+    void makePayment(const double amount);
 
 private:
+    double year_;
     double balance_;
     double interest_rate_;
     int term_in_years_;

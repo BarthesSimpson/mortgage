@@ -5,12 +5,7 @@
 class Simulation
 {
 public:
-    Simulation(std::vector<Home> homes)
-    {
-        homes_ = move(homes);
-    }
+    const std::vector<Home> homes_;
+    Simulation(std::vector<Home> homes) : homes_(homes){};
     void run();
-
-private:
-    std::vector<Home> homes_;
 };
