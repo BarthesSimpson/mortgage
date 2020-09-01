@@ -11,7 +11,6 @@ public:
     std::string name;
     Home(std::string name, double price, Mortgage &&mortgage) : name(name), initial_value_(price), value_(price), mortgage_(&mortgage)
     {
-        year_ = 0;
         equity_ = mortgage.getDownPaymentSize();
     };
     Home(toml::value rawHome);
@@ -25,12 +24,14 @@ public:
     const double getPercentPaid();
     const double getRemainingDebt();
     const double getEquity();
+    const double getMonthlyPayment();
     void incrementYear(double appreciationPercent);
 
 private:
     double initial_value_;
     double value_;
     double equity_;
-    int year_;
+    int year_ = 0;
     std::shared_ptr<Mortgage> mortgage_;
+    const double computeMonthlyPropertyTax();
 };
