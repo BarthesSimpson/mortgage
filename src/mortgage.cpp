@@ -1,4 +1,5 @@
 #include "mortgage.hpp"
+#include <algorithm>
 
 const double Mortgage::getDownPaymentSize()
 {
@@ -17,12 +18,15 @@ const double Mortgage::getBalance()
     return balance_;
 };
 
-void Mortgage::incrementYear(){
-    //TODO
+void Mortgage::incrementYear()
+{
+    balance_ = balance_ * (1.0 + interest_rate_);
+    year_++;
 };
 
-void Mortgage::makePayment(const double amount){
-    //TODO
+void Mortgage::makePayment(const double amount)
+{
+    balance_ = std::max(0.0, balance_ - amount);
 };
 
 const double Mortgage::computeMonthlyPrivateMortgageInsurance()

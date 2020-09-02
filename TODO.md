@@ -1,0 +1,4 @@
+- Design and implement Market and Portfolio
+- Design and implement the simulation runner
+- Add a make target to run the simulation
+- Finish the README documentation 
