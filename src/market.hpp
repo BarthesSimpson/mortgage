@@ -8,7 +8,7 @@ public:
         MODERATE_INTEREST_RATES,
         HIGH_INTEREST_RATES
     };
-    Market(Regime regime) : regime_(regime){};
+    explicit Market(Regime regime) : regime_(regime){};
 
 private:
     Regime regime_;

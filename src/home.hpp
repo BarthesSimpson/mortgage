@@ -20,11 +20,12 @@ public:
                << H.getRemainingDebt() << ", equity: " << H.getEquity() << "}";
         return output;
     };
-    const double getValue();
-    const double getPercentPaid();
-    const double getRemainingDebt();
-    const double getEquity();
-    const double getMonthlyPayment();
+    double getValue() const;
+    double getPercentPaid() const;
+    double getRemainingDebt() const;
+    double getEquity() const;
+    double getMonthlyPayment() const;
+    int yearsTillPaid() const;
     void incrementYear(double appreciationPercent);
 
 private:
@@ -33,5 +34,5 @@ private:
     double equity_;
     int year_ = 0;
     std::shared_ptr<Mortgage> mortgage_;
-    const double computeMonthlyPropertyTax();
+    double computeMonthlyPropertyTax() const;
 };

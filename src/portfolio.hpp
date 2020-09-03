@@ -13,8 +13,8 @@ public:
     {
         year_ = 0;
     };
-    double getBalance();
-    void getYear();
+    double getBalance() const;
+    void getYear() const;
     void incrementYear();
 
 private:

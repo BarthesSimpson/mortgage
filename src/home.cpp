@@ -18,27 +18,36 @@ Home::Home(toml::value rawHome)
     equity_ = mortgage_->getDownPaymentSize();
 };
 
-const double Home::getValue()
+double Home::getValue() const
 {
     return value_;
 };
 
-const double Home::getPercentPaid()
+double Home::getPercentPaid() const
 {
     return 100.0 * ((initial_value_ - mortgage_->getBalance()) / initial_value_);
 };
 
-const double Home::getRemainingDebt()
+double Home::getRemainingDebt() const
 {
     return mortgage_->getBalance();
 };
 
-const double Home::getEquity()
+double Home::getEquity() const
 {
     return equity_;
 };
 
-const double Home::computeMonthlyPropertyTax()
+int Home::yearsTillPaid() const
+{
+    if (!mortgage_)
+    {
+        return 0;
+    }
+    return mortgage_->term_in_years - year_;
+}
+
+double Home::computeMonthlyPropertyTax() const
 {
     // TODO: get this from a config file
     const double TAX_RATE = 0.0095;
