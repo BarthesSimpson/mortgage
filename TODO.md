@@ -1,5 +1,3 @@
-- Add more tests and find any bugs in mortgage/home payment logic
-- Add tests and logic for house appreciation
 - Finish implementing the simulation runner
 - Add a make target to run the simulation
 - Design and implement Market and Portfolio for fancier simulation

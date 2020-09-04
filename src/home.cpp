@@ -24,9 +24,10 @@ double Home::getValue() const
     return value_;
 };
 
+// Represented as a decimal, e.g. 0.1 is 10%
 double Home::getPercentPaid() const
 {
-    return 100.0 * ((initial_value_ - mortgage_->getBalance()) / initial_value_);
+    return (initial_value_ - mortgage_->getBalance()) / initial_value_;
 };
 
 double Home::getRemainingDebt() const

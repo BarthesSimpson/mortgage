@@ -13,6 +13,8 @@ double Mortgage::getMonthlyPayment() const
            computeMonthlyPrincipalPayment();
 };
 
+// Should probably handle interest balance and principal balance separately to allow more realistic payment apportionment, 
+// but this is ok for now.
 double Mortgage::getBalance() const
 {
     return balance_;
@@ -28,7 +30,7 @@ void Mortgage::makePayment(const double amount)
 {
     // For simplicity, we assume we only ever make a payment that is an exact multiple of the monthly required payment
     double num_months = amount / (computeMonthlyPrivateMortgageInsurance() + computeMonthlyInterestPayment() + computeMonthlyPrincipalPayment());
-    balance_ = std::max(0.0, balance_ - (num_months * computeMonthlyPrincipalPayment()));
+    balance_ = std::max(0.0, balance_ - (num_months * (computeMonthlyInterestPayment() + computeMonthlyPrincipalPayment())));
 };
 
 double Mortgage::computeMonthlyPrivateMortgageInsurance() const
