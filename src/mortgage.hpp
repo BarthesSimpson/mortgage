@@ -16,6 +16,9 @@ public:
     double getBalance() const;
     void incrementYear();
     void makePayment(const double amount);
+    double computeMonthlyPrivateMortgageInsurance() const;
+    double computeMonthlyInterestPayment() const;
+    double computeMonthlyPrincipalPayment() const;
 
 private:
     double year_;
@@ -23,7 +26,4 @@ private:
     double balance_;
     double interest_rate_;
     double down_payment_;
-    double computeMonthlyPrivateMortgageInsurance() const;
-    double computeMonthlyInterestPayment() const;
-    double computeMonthlyBalancePayment() const;
 };

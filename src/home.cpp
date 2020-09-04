@@ -3,6 +3,7 @@
 #include <string>
 #include <toml11/toml.hpp>
 #include <memory>
+#include <algorithm>
 
 Home::Home(toml::value rawHome)
 {
@@ -35,7 +36,7 @@ double Home::getRemainingDebt() const
 
 double Home::getEquity() const
 {
-    return equity_;
+    return (equity_ / initial_value_) * value_;
 };
 
 int Home::yearsTillPaid() const
@@ -45,6 +46,28 @@ int Home::yearsTillPaid() const
         return 0;
     }
     return mortgage_->term_in_years - year_;
+}
+
+void Home::makePayment(const double amount)
+{
+    // Keep it simple for now by just assuming we always pay an exact multiple of the total monthly payment
+    double num_months = amount / getMonthlyPayment();
+    double tax = num_months * computeMonthlyPropertyTax();
+    mortgage_->makePayment(amount - tax);
+    equity_ = std::min(equity_ + (num_months * mortgage_->computeMonthlyPrincipalPayment()),
+                       initial_value_);
+}
+
+void Home::incrementYear(double appreciationPercent)
+{
+    mortgage_->incrementYear();
+    value_ = (1.0 + appreciationPercent) * value_;
+    year_++;
+}
+
+double Home::getMonthlyPayment() const
+{
+    return computeMonthlyPropertyTax() + mortgage_->getMonthlyPayment();
 }
 
 double Home::computeMonthlyPropertyTax() const

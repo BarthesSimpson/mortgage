@@ -10,7 +10,7 @@ double Mortgage::getMonthlyPayment() const
 {
     return computeMonthlyPrivateMortgageInsurance() +
            computeMonthlyInterestPayment() +
-           computeMonthlyBalancePayment();
+           computeMonthlyPrincipalPayment();
 };
 
 double Mortgage::getBalance() const
@@ -26,12 +26,14 @@ void Mortgage::incrementYear()
 
 void Mortgage::makePayment(const double amount)
 {
-    balance_ = std::max(0.0, balance_ - amount);
+    // For simplicity, we assume we only ever make a payment that is an exact multiple of the monthly required payment
+    double num_months = amount / (computeMonthlyPrivateMortgageInsurance() + computeMonthlyInterestPayment() + computeMonthlyPrincipalPayment());
+    balance_ = std::max(0.0, balance_ - (num_months * computeMonthlyPrincipalPayment()));
 };
 
 double Mortgage::computeMonthlyPrivateMortgageInsurance() const
 {
-    if ((balance_ / initial_value_) >= 0.8)
+    if ((balance_ / initial_value_) < 0.8)
     {
         return 0.0;
     }
@@ -44,10 +46,10 @@ double Mortgage::computeMonthlyInterestPayment() const
 {
     // This isn't quite accurate since I think the annual interest payment is calculated
     // based on the year-start balance and then divided by 12, but it's close enough.
-    return (interest_rate_ / 12.0) * balance_;
+    return (interest_rate_ * balance_) / 12.0;
 };
 
-double Mortgage::computeMonthlyBalancePayment() const
+double Mortgage::computeMonthlyPrincipalPayment() const
 {
-    return (initial_value_ / (12.0 * term_in_years));
+    return ((initial_value_ - down_payment_) / (12.0 * term_in_years));
 };

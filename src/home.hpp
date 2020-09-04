@@ -25,8 +25,10 @@ public:
     double getRemainingDebt() const;
     double getEquity() const;
     double getMonthlyPayment() const;
+    double computeMonthlyPropertyTax() const;
     int yearsTillPaid() const;
     void incrementYear(double appreciationPercent);
+    void makePayment(const double amount);
 
 private:
     double initial_value_;
@@ -34,5 +36,4 @@ private:
     double equity_;
     int year_ = 0;
     std::shared_ptr<Mortgage> mortgage_;
-    double computeMonthlyPropertyTax() const;
 };

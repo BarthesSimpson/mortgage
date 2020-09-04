@@ -14,7 +14,6 @@ Simulation Parser::parse(std::string filepath)
 
     for (auto h : rawHomes)
     {
-
         std::cout << "Processing " << h.at("name") << std::endl;
         try
         {
