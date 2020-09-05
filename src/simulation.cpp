@@ -12,7 +12,7 @@ void Simulation::run()
     {
         std::cout << "Year " << y + 1 << std::endl;
 
-        for (auto home : homes_)
+        for (Home &home : homes_)
         {
             home.incrementYear(0.0);
             const double annual_payment = home.getMonthlyPayment() * 12.0;
@@ -25,7 +25,7 @@ void Simulation::run()
 void Simulation::printState()
 {
     std::cout << DIVIDER << std::endl;
-    for (auto home : homes_)
+    for (auto &home : homes_)
     {
         std::cout << home << std::endl;
     };

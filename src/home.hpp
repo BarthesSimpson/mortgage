@@ -13,10 +13,11 @@ public:
     {
         equity_ = mortgage.getDownPaymentSize();
     };
+    Home(const Home &home) = default;
     explicit Home(toml::value rawHome);
-    friend std::ostream &operator<<(std::ostream &output, Home &H)
+    friend std::ostream &operator<<(std::ostream &output, const Home &H)
     {
-        output << "Home: {value: " << H.getValue() << ", paid : " << H.getPercentPaid() << "% , remainingDebt: "
+        output << "Home: {value: " << H.getValue() << ", paid : " << 100.0 * H.getPercentPaid() << "% , remainingDebt: "
                << H.getRemainingDebt() << ", equity: " << H.getEquity() << "}";
         return output;
     };

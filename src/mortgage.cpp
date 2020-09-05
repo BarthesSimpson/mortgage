@@ -22,7 +22,7 @@ double Mortgage::getBalance() const
 
 void Mortgage::incrementYear()
 {
-    balance_ = balance_ * (1.0 + interest_rate_);
+    balance_ *= (1.0 + interest_rate_);
     year_++;
 };
 

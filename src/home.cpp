@@ -55,14 +55,14 @@ void Home::makePayment(const double amount)
     double num_months = amount / getMonthlyPayment();
     double tax = num_months * computeMonthlyPropertyTax();
     mortgage_->makePayment(amount - tax);
-    equity_ = std::min(equity_ + (num_months * mortgage_->computeMonthlyPrincipalPayment()),
-                       initial_value_);
+    equity_ += (num_months * mortgage_->computeMonthlyPrincipalPayment());
+    equity_ = std::min(equity_, initial_value_);
 }
 
 void Home::incrementYear(double appreciationPercent)
 {
     mortgage_->incrementYear();
-    value_ = (1.0 + appreciationPercent) * value_;
+    value_ *= (1.0 + appreciationPercent);
     year_++;
 }
 
