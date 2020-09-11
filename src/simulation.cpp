@@ -15,6 +15,7 @@ void Simulation::run()
         for (Home &home : homes_)
         {
             home.incrementYear(0.0);
+            std::cout << "For home <" << home.name << " monthly payment is " << home.getMonthlyPayment() << std::endl;
             const double annual_payment = home.getMonthlyPayment() * 12.0;
             home.makePayment(annual_payment);
         };
